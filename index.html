@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Daily Cat Facts</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+
+      body {
+        background: linear-gradient(135deg, #ffe6f0, #e6f7ff);
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+      }
+
+      .container {
+        background: white;
+        max-width: 700px;
+        width: 100%;
+        padding: 40px;
+        border-radius: 25px;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        text-align: center;
+      }
+
+      h1 {
+        font-size: 32px;
+        color: #ff6b9d;
+        margin-bottom: 10px;
+      }
+
+      .subtitle {
+        color: #777;
+        margin-bottom: 30px;
+      }
+
+      .fact-card {
+        background: #fff0f6;
+        padding: 20px;
+        border-radius: 18px;
+        margin-bottom: 15px;
+        transition: 0.3s ease;
+        cursor: pointer;
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.05);
+      }
+
+      .fact-card:hover {
+        transform: translateY(-5px);
+        background: #ffe0ed;
+      }
+
+      .fact-card p {
+        color: #444;
+        font-size: 15px;
+        line-height: 1.6;
+      }
+
+      footer {
+        margin-top: 25px;
+        font-size: 13px;
+        color: #999;
+      }
+      button {
+        border: 1px solid #ffafd0;
+        background: #ffe0ed;
+        padding: 10px 20px;
+        border-radius: 12px;
+        transition: 0.3s;
+      }
+      button:hover {
+        transform: scale(1.05);
+      }
+
+      @media (max-width: 600px) {
+        .container {
+          padding: 25px;
+        }
+        h1 {
+          font-size: 24px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>🐱 Daily Cat Facts</h1>
+      <p class="subtitle">Cute facts to brighten your day</p>
+
+      <div class="fact-card">
+        <p class="fact"></p>
+      </div>
+
+      <button>Click here!</button>
+
+      <footer>Made with love for cat lovers 🐾</footer>
+    </div>
+    <script>
+      const URL = "https://catfact.ninja/fact";
+      let fact = document.querySelector(".fact");
+      const btn = document.querySelector("button");
+      btn.addEventListener("click", async function () {
+        const promise = await fetch(URL);
+        const data = await promise.json();
+        fact.textContent = data.fact;
+      });
+    </script>
+  </body>
+</html>
